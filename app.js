@@ -25,7 +25,7 @@ inquirer
     {
       type: "list",
       name: "Employees",
-      message: "Type of employee.",
+      message: "Type of Employee",
       choices: ["Manager", "Engineer", "Intern"],
     },
   ])
@@ -63,6 +63,7 @@ inquirer
               answers.office
             );
             employees.push(man);
+            fs.writeFileSync("team.html", render(employees));
           });
         break;
       case "Engineer":
@@ -97,6 +98,7 @@ inquirer
               answers.github
             );
             employees.push(eng);
+            fs.writeFileSync("team.html", render(employees));
           });
         break;
       case "Intern":
@@ -131,13 +133,14 @@ inquirer
               answers.school
             );
             employees.push(int);
+            fs.writeFileSync("team.html", render(employees));
           });
         break;
       default:
         console.log("err");
     }
   });
-//fs.writeFileSync("team.html", render(employees));
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
